@@ -1,0 +1,9 @@
+#pragma once
+enum Status {
+    MOVING_UP,
+    MOVING_DOWN,
+    DOOR_OPENING,
+    DOOR_CLOSING,
+    STANDING_WITH_OPEN_DOORS,
+    STANDING_WITH_CLOSED_DOORS
+};
