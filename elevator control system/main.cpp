@@ -16,7 +16,8 @@ void testLift (Cabin* c1, Cabin* c2, std::vector<Floor> vec) {
 }
 
 int main() {
-
+	system("chcp 1251");
+	
 	Cabin *cabin1 = new Cabin();
 	Cabin *cabin2 = new Cabin();
 	std::vector<Floor> floors;
