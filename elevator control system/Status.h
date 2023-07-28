@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 enum Status {
     MOVING_UP,
     MOVING_DOWN,

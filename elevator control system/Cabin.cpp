@@ -1,28 +1,28 @@
-#include "Cabin.h"
+п»ї#include "Cabin.h"
 
 Cabin::Cabin() {
     floor = 1;
     status = STANDING_WITH_CLOSED_DOORS;
 }
 
-// Нажать кнопку этажа 
+// РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ СЌС‚Р°Р¶Р° 
 void Cabin::pressFloorButton(int floor) {
 
-    // Двери закрываются после нажатия на кнопку этажа
+    // Р”РІРµСЂРё Р·Р°РєСЂС‹РІР°СЋС‚СЃСЏ РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ СЌС‚Р°Р¶Р°
     this->pressDoorCloseButton();
 
-    //Если выбранный этаж выше текущего, то лифт двигает вверх
+    //Р•СЃР»Рё РІС‹Р±СЂР°РЅРЅС‹Р№ СЌС‚Р°Р¶ РІС‹С€Рµ С‚РµРєСѓС‰РµРіРѕ, С‚Рѕ Р»РёС„С‚ РґРІРёРіР°РµС‚ РІРІРµСЂС…
     if (floor > this->floor) {
         status = MOVING_UP;
     }
-    //Если выбранный этаж ниже текущего, то лифт двигает вниз
+    //Р•СЃР»Рё РІС‹Р±СЂР°РЅРЅС‹Р№ СЌС‚Р°Р¶ РЅРёР¶Рµ С‚РµРєСѓС‰РµРіРѕ, С‚Рѕ Р»РёС„С‚ РґРІРёРіР°РµС‚ РІРЅРёР·
     else if (floor < this->floor) {
         status = MOVING_DOWN;
     }
 
 
-    std::cout << "Кабинка двигается " << (status == MOVING_UP ? "вверх " : "вниз ") << std::endl;
-    // Пока кабина не достигнет нужного этажа, увеличиваем или уменьшаем текущий этаж
+    std::cout << "РљР°Р±РёРЅРєР° РґРІРёРіР°РµС‚СЃСЏ " << (status == MOVING_UP ? "РІРІРµСЂС… " : "РІРЅРёР· ") << std::endl;
+    // РџРѕРєР° РєР°Р±РёРЅР° РЅРµ РґРѕСЃС‚РёРіРЅРµС‚ РЅСѓР¶РЅРѕРіРѕ СЌС‚Р°Р¶Р°, СѓРІРµР»РёС‡РёРІР°РµРј РёР»Рё СѓРјРµРЅСЊС€Р°РµРј С‚РµРєСѓС‰РёР№ СЌС‚Р°Р¶
     while (this->floor != floor) {
         if (status == MOVING_UP) {
             this->floor++;
@@ -32,55 +32,55 @@ void Cabin::pressFloorButton(int floor) {
             this->floor--;
             Sleep(TIME_ONE_FLOOR);
         }
-        std::cout << "Кабина находится на этаже " << this->floor << std::endl;
+        std::cout << "РљР°Р±РёРЅР° РЅР°С…РѕРґРёС‚СЃСЏ РЅР° СЌС‚Р°Р¶Рµ " << this->floor << std::endl;
     }
     this->status = STANDING_WITH_CLOSED_DOORS;
-    std::cout << "Кабина прибыла на этаж "  << this->floor << std::endl;
+    std::cout << "РљР°Р±РёРЅР° РїСЂРёР±С‹Р»Р° РЅР° СЌС‚Р°Р¶ "  << this->floor << std::endl;
 
-    // Двери открываются после прибытия
+    // Р”РІРµСЂРё РѕС‚РєСЂС‹РІР°СЋС‚СЃСЏ РїРѕСЃР»Рµ РїСЂРёР±С‹С‚РёСЏ
     this->pressDoorOpenButton();
 
-    // И снова закрываются
+    // Р СЃРЅРѕРІР° Р·Р°РєСЂС‹РІР°СЋС‚СЃСЏ
     this->pressDoorCloseButton();
 }
  
-// Нажать кнопку закрытия дверей 
+// РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ Р·Р°РєСЂС‹С‚РёСЏ РґРІРµСЂРµР№ 
 void Cabin::pressDoorCloseButton() {
     if (status == STANDING_WITH_OPEN_DOORS) {
-        std::cout << "Двери закрываются" << std::endl;
+        std::cout << "Р”РІРµСЂРё Р·Р°РєСЂС‹РІР°СЋС‚СЃСЏ" << std::endl;
         status = DOOR_CLOSING;
         Sleep(TIME_OPEN_CLOSE_DOOR);
         status = STANDING_WITH_CLOSED_DOORS;
-        std::cout << "Двери закрыты." << std::endl;
+        std::cout << "Р”РІРµСЂРё Р·Р°РєСЂС‹С‚С‹." << std::endl;
     }
     else if (status == STANDING_WITH_CLOSED_DOORS){
-        std::cout << "Двери уже закрыты." << std::endl;
+        std::cout << "Р”РІРµСЂРё СѓР¶Рµ Р·Р°РєСЂС‹С‚С‹." << std::endl;
     }
     else if (status == DOOR_CLOSING or status == DOOR_OPENING) {
-        std::cout << "Двери открываются или закрываются в данный момент." << std::endl;
+        std::cout << "Р”РІРµСЂРё РѕС‚РєСЂС‹РІР°СЋС‚СЃСЏ РёР»Рё Р·Р°РєСЂС‹РІР°СЋС‚СЃСЏ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚." << std::endl;
     }
 }
 
-// Нажать кнопку открытия дверей 
+// РќР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РѕС‚РєСЂС‹С‚РёСЏ РґРІРµСЂРµР№ 
 void Cabin::pressDoorOpenButton() {
     if (status == STANDING_WITH_CLOSED_DOORS) {
-        std::cout << "Двери открываются" << std::endl;
+        std::cout << "Р”РІРµСЂРё РѕС‚РєСЂС‹РІР°СЋС‚СЃСЏ" << std::endl;
         status = DOOR_CLOSING;
         Sleep(TIME_OPEN_CLOSE_DOOR);
         status = STANDING_WITH_OPEN_DOORS;
-        std::cout << "Двери открыты." << std::endl;
+        std::cout << "Р”РІРµСЂРё РѕС‚РєСЂС‹С‚С‹." << std::endl;
     }
     else if (status == DOOR_OPENING or status == DOOR_CLOSING){
-        std::cout << "Двери открываются или закрываются в данный момент." << std::endl;
+        std::cout << "Р”РІРµСЂРё РѕС‚РєСЂС‹РІР°СЋС‚СЃСЏ РёР»Рё Р·Р°РєСЂС‹РІР°СЋС‚СЃСЏ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚." << std::endl;
     }
     else if (status == MOVING_UP or status == MOVING_DOWN) {
-        std::cout << "Нельзя открывать двери во время движения." << std::endl;
+        std::cout << "РќРµР»СЊР·СЏ РѕС‚РєСЂС‹РІР°С‚СЊ РґРІРµСЂРё РІРѕ РІСЂРµРјСЏ РґРІРёР¶РµРЅРёСЏ." << std::endl;
     }
 
 }
 
 void Cabin::pressDispatcherButton() {
-    std::cout << "Был вызвван диспетчер.";
+    std::cout << "Р‘С‹Р» РІС‹Р·РІРІР°РЅ РґРёСЃРїРµС‚С‡РµСЂ.";
 }
 
 void Cabin::setFloor(int floor) {

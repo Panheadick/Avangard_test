@@ -1,22 +1,21 @@
-#include "Cabin.h"
+ï»¿#include "Cabin.h"
 #include <iostream>
 #include "Floor.h"
 #include <vector>
 
 void testLift (Cabin* c1, Cabin* c2, std::vector<Floor> vec) {
-	std::cout << "Ïàññàæèð 1 âûçâàë ëèôò ñ 1-îãî ýòàæà " << std::endl;
+	std::cout << "ÐŸÐ°ÑÑÐ°Ð¶Ð¸Ñ€ 1 Ð²Ñ‹Ð·Ð²Ð°Ð» Ð»Ð¸Ñ„Ñ‚ Ñ 1-Ð¾Ð³Ð¾ ÑÑ‚Ð°Ð¶Ð° " << std::endl;
 	Cabin *c = vec[0].pressLiftButton(c1, c2);
-	std::cout << "Ïàññàæèð íàæàë íà êíîïêó 15 ýòàæà";
+	std::cout << "ÐŸÐ°ÑÑÐ°Ð¶Ð¸Ñ€ Ð½Ð°Ð¶Ð°Ð» Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ 15 ÑÑ‚Ð°Ð¶Ð°";
 	c->pressFloorButton(15);
 
-	std::cout << "Ïàññàæèð âûçâàë ëèôò ñ 15-îãî ýòàæà" << std::endl;
+	std::cout << "ÐŸÐ°ÑÑÐ°Ð¶Ð¸Ñ€ Ð²Ñ‹Ð·Ð²Ð°Ð» Ð»Ð¸Ñ„Ñ‚ Ñ 15-Ð¾Ð³Ð¾ ÑÑ‚Ð°Ð¶Ð°" << std::endl;
 	c = vec[14].pressLiftButton(c1, c2);
-	std::cout << "Ïàññàæèð íàæàë íà êíîïêó 1 ýòàæà";
+	std::cout << "ÐŸÐ°ÑÑÐ°Ð¶Ð¸Ñ€ Ð½Ð°Ð¶Ð°Ð» Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ 1 ÑÑ‚Ð°Ð¶Ð°";
 	c->pressFloorButton(1);
 }
 
 int main() {
-	system("chcp 1251");
 
 	Cabin *cabin1 = new Cabin();
 	Cabin *cabin2 = new Cabin();

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Status.h"
 #include "Cabin.h"
 #include  <cmath>
@@ -6,7 +6,7 @@
 class Floor
 {
 private:
-    // Переменная floor хранит информацию о том, какой этот этаж по счету [1-20]
+    // РџРµСЂРµРјРµРЅРЅР°СЏ floor С…СЂР°РЅРёС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С‚РѕРј, РєР°РєРѕР№ СЌС‚РѕС‚ СЌС‚Р°Р¶ РїРѕ СЃС‡РµС‚Сѓ [1-20]
     int floor;
     int cabin1Floor;
     Status cabin1Status;
@@ -15,7 +15,7 @@ private:
     bool callButtonPressed;
 public:
     Floor(int floor);
-    // Метод принимает 2 обьекта кабин лифта, возвращается кабинку, которая приехала
+    // РњРµС‚РѕРґ РїСЂРёРЅРёРјР°РµС‚ 2 РѕР±СЊРµРєС‚Р° РєР°Р±РёРЅ Р»РёС„С‚Р°, РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ РєР°Р±РёРЅРєСѓ, РєРѕС‚РѕСЂР°СЏ РїСЂРёРµС…Р°Р»Р°
     Cabin* pressLiftButton(Cabin*, Cabin*);
 };
 

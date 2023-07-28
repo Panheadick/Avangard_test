@@ -1,4 +1,4 @@
-#include "Floor.h"
+п»ї#include "Floor.h"
 
 Floor::Floor(int floor) {
     this->floor = floor;
@@ -10,18 +10,18 @@ Floor::Floor(int floor) {
 }
 
 Cabin* Floor::pressLiftButton(Cabin *c1, Cabin *c2) {
-    // Если кнопка не нажата
+    // Р•СЃР»Рё РєРЅРѕРїРєР° РЅРµ РЅР°Р¶Р°С‚Р°
     if (!callButtonPressed) {
         this->callButtonPressed = true;
 
-        // Передача информации о кабинах этажу
+        // РџРµСЂРµРґР°С‡Р° РёРЅС„РѕСЂРјР°С†РёРё Рѕ РєР°Р±РёРЅР°С… СЌС‚Р°Р¶Сѓ
         this->cabin1Floor = c1->getFloor();
         this->cabin1Status = c1->getStatus();
         this->cabin2Floor = c2->getFloor();
         this->cabin2Status = c2->getStatus();
 
 
-        // Если обе кабины доступны выбирается ближайшая 
+        // Р•СЃР»Рё РѕР±Рµ РєР°Р±РёРЅС‹ РґРѕСЃС‚СѓРїРЅС‹ РІС‹Р±РёСЂР°РµС‚СЃСЏ Р±Р»РёР¶Р°Р№С€Р°СЏ 
         if (this->cabin1Status == STANDING_WITH_CLOSED_DOORS and this->cabin2Status == STANDING_WITH_CLOSED_DOORS)
         {
             if ( abs(this->cabin1Floor - this->floor) < abs(this->cabin2Floor - this->floor) ) {
@@ -35,7 +35,7 @@ Cabin* Floor::pressLiftButton(Cabin *c1, Cabin *c2) {
                 return c2;
             }
         }
-        // Если свободен только один, выбираем его
+        // Р•СЃР»Рё СЃРІРѕР±РѕРґРµРЅ С‚РѕР»СЊРєРѕ РѕРґРёРЅ, РІС‹Р±РёСЂР°РµРј РµРіРѕ
         else if (this->cabin2Status == STANDING_WITH_CLOSED_DOORS) {
             c2->pressFloorButton(this->floor);
             this->callButtonPressed = false;
@@ -46,9 +46,9 @@ Cabin* Floor::pressLiftButton(Cabin *c1, Cabin *c2) {
             this->callButtonPressed = false;
             return c1;
         }
-        // Если нет свободных кабин выводится сообщение об ошибке
+        // Р•СЃР»Рё РЅРµС‚ СЃРІРѕР±РѕРґРЅС‹С… РєР°Р±РёРЅ РІС‹РІРѕРґРёС‚СЃСЏ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
         else {
-            std::cout << "Подождите пока один из лифтов освободится и снова нажмите на кнопку." << std::endl;
+            std::cout << "РџРѕРґРѕР¶РґРёС‚Рµ РїРѕРєР° РѕРґРёРЅ РёР· Р»РёС„С‚РѕРІ РѕСЃРІРѕР±РѕРґРёС‚СЃСЏ Рё СЃРЅРѕРІР° РЅР°Р¶РјРёС‚Рµ РЅР° РєРЅРѕРїРєСѓ." << std::endl;
         }
     }
 }
